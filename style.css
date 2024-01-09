@@ -39,6 +39,27 @@ body {
     letter-spacing: .2em;
 }
 
+.credit div {
+    margin-left: 2em;
+}
+
+.credit div:last-child {
+    margin-left: 0;
+}
+
+.credit div p {
+    line-height: 2;
+}
+
+.credit div a {
+    text-underline-position: left;
+    color: #2B2B2B;
+}
+
+.credit {
+    gap: 7em;
+}
+
 .section1 {
     gap: 10em;
 }
