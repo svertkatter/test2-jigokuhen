@@ -11,9 +11,16 @@
 
 <body>
     <div id="main" class="fullPageScroll">
-        <h1>加速度センサーデータ</h1>
-        <button id="permissionButton">センサー許可</button>
-        <button id="resetButton">円のサイズリセット</button>
+        <section class="section">
+            <h1>加速度センサーデータ</h1>
+            <button id="permissionButton">センサー許可</button>
+            <button id="resetButton">円のサイズリセット</button>
+        </section>
+        <section class="section">
+            <h1>加速度センサーデータ</h1>
+            <button id="permissionButton">センサー許可</button>
+            <button id="resetButton">円のサイズリセット</button>
+        </section>
     </div>
     <script>
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
