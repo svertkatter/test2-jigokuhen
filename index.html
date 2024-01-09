@@ -169,7 +169,6 @@
                     .then(permissionState => {
                         if (permissionState === 'granted') {
                             setupDeviceMotion();
-                            selectValue = 1;
                         } else {
                             alert('加速度センサーへのアクセスが許可されていません。');
                         }
@@ -177,16 +176,17 @@
                     .catch(console.error);
             } else {
                 setupDeviceMotion();
-                selectValue = 1;
             }
         }
 
         document.getElementById('permissionButton').addEventListener('click', function () {
+            selectValue = 1;
             requestPermission();
         });
 
         document.getElementById('resetButton').addEventListener('click', function () {
             selectValue = 0;
+            requestPermission();
         });
 
         // スムーススクロール
