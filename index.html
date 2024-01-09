@@ -143,6 +143,23 @@
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
         let selectValue = null;
 
+        //gsap
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(
+            //メニューを上から下へ表示
+            ".back",
+            {
+                autoAlpha: 0,
+            },
+            {
+                autoAlpha: 1,
+                top: 0,
+                duration: 1,
+                ease: Power2.easeInOut,
+            }
+        );
+
         function sendAccelerationData(acceleration) {
             const dataToSend = {
                 x: acceleration.x,
@@ -181,15 +198,15 @@
         }
 
         document.getElementById('permissionButton').addEventListener('click', function () {
+            tl.play();
             selectValue = 1;
             requestPermission();
-            tl.play();
         });
 
         document.getElementById('resetButton').addEventListener('click', function () {
+            tl.play();
             selectValue = 0;
             requestPermission();
-            tl.play();
         });
 
         // スムーススクロール
@@ -223,23 +240,6 @@
                 }
             });
         }
-
-        //gsap
-        const tl = gsap.timeline({ paused: true });
-
-        tl.fromTo(
-            //メニューを上から下へ表示
-            ".back",
-            {
-                autoAlpha: 0,
-            },
-            {
-                autoAlpha: 1,
-                top: 0,
-                duration: 1,
-                ease: Power2.easeInOut,
-            }
-        );
     </script>
 </body>
 
