@@ -136,7 +136,11 @@
                 </button>
                 <button id="resetButton">私の娘を、どうぞ牛車にお乗せください。」</button>
             </div>
-            <div class="back"></div>
+            <div class="back">
+                <div class="mssg">
+                    <p>スマホを筆のように、屏風の前で振ってください。</p>
+                </div>
+            </div>
         </section>
     </div>
     <script>
@@ -156,6 +160,16 @@
                 autoAlpha: 1,
                 top: 0,
                 duration: 1,
+                ease: Power2.easeInOut,
+            }
+
+        ).fromTo(
+            ".mssg", {
+            autoAlpha: 0,
+        },
+            {
+                autoAlpha: 1,
+                duration: 2,
                 ease: Power2.easeInOut,
             }
         );
