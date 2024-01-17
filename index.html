@@ -145,7 +145,34 @@
     </div>
     <script>
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
-        let selectValue = 2;
+        let selectValue = 0;
+
+        function SendResetValue() {
+            const resetValue = {
+                x: 0,
+                y: 0,
+                z: 0,
+                select: selectValue
+            };
+            selectValue = 0;
+            ws.send(JSON.stringify(resetValue));
+        }
+
+        //ページをロードした時
+        window.onload = function () {
+            SendResetValue();
+        }
+
+        //ページを離れた時
+        window.onbeforeunload = function () {
+            SendResetValue();
+        }
+
+        //ページを離れた時
+        window.onunload = function () {
+            SendResetValue();
+        }
+
 
         //gsap
         const tl = gsap.timeline({ paused: true });
@@ -219,7 +246,7 @@
 
         document.getElementById('resetButton').addEventListener('click', function () {
             tl.play();
-            selectValue = 0;
+            selectValue = 2;
             requestPermission();
         });
 
