@@ -204,6 +204,7 @@
 
         function sendAccelerationData(acceleration) {
             const dataToSend = {
+                type: "keepAlive",
                 x: acceleration.x,
                 y: acceleration.y,
                 z: acceleration.z,
