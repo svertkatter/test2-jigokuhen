@@ -44,13 +44,19 @@ p {
     line-height: 2;
 }
 
+.credit_page .section {
+    display: block;
+    writing-mode: initial;
+    padding: 20%;
+}
+
 .credit div {
     margin-left: 2em;
 }
 
-.credit div:last-child {
+/* .credit div:last-child {
     margin-left: 0;
-}
+} */
 
 .credit div p {
     line-height: 2;
@@ -61,8 +67,12 @@ p {
     color: #2B2B2B;
 }
 
+.credit .txt-box {
+    display: initial;
+}
+
 .credit {
-    gap: 7em;
+    padding: 20em;
 }
 
 .section1 {

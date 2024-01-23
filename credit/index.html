@@ -7,6 +7,8 @@
     <title>『地獄變』 クレジット</title>
     <link rel="stylesheet" href="/reset.css">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.2.2/markdown-it.min.js"></script>
     <script>
         (function (d) {
             var config = {
@@ -17,38 +19,43 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
+    </script>
 </head>
 
 <body>
-    <div id="main" class="fullPageScroll">
+    <main id="main" class="fullPageScroll credit_page">
         <section id="section1" class="credit section">
-            <p class="title">『地獄變』 クレジット</p>
-            <div class="txt-box">
-                <div>
-                    <p>屏風</p>
-                    <p style="text-indent: 1em;">木材、障子紙</p>
-                </div>
-                <div>
-                    <p>土台</p>
-                    <p style="text-indent: 1em;">木材、布、キャスター</p>
-                </div>
-                <div>
-                    <p>ソフトウェア</p>
-                    <p style="text-indent: 1em;">Touchdesigner</p>
-                </div>
-                <div>
-                    <p>ウェブサイト</p>
-                    <p style="text-indent: 1em;">HTML, CSS, JavaScript</p>
-                </div>
-                <div>
-                    <p>屏風絵</p>
-                    <p style="text-indent: 1em;">DALL·Eを使用したGPTs、"<a
-                            href="https://chat.openai.com/g/g-XmXHg7qQQ-yoshihide">YOSHIHIDE</a>"によって生成。一部Adobe
-                        fireflyによって加工。</p>
-                </div>
+        <p class="title">『地獄變』 クレジット</p>
+        <div class="txt-box">
+            <div>
+                <p>原作</p>
+                <p style="text-indent: 1em;">芥川龍之介『地獄変』</p>
             </div>
-        </section>
-    </div>
+            <div style="margin-top: 2em;">
+                <p>屏風</p>
+                <p style="text-indent: 1em;">木材、障子紙</p>
+            </div>
+            <div>
+                <p>土台</p>
+                <p style="text-indent: 1em;">木材、布、キャスター</p>
+            </div>
+            <div>
+                <p>ソフトウェア</p>
+                <p style="text-indent: 1em;">TouchDesigner</p>
+            </div>
+            <div>
+                <p>ウェブサイト</p>
+                <p style="text-indent: 1em;">HTML, CSS, JavaScript</p>
+            </div>
+            <div>
+                <p>屏風絵</p>
+                <p style="text-indent: 1em;">DALL·Eを使用したGPTs、"<a
+                        href="https://chat.openai.com/g/g-XmXHg7qQQ-yoshihide">YOSHIHIDE</a>"によって生成。一部Adobe
+                    fireflyによって加工。</p>
+            </div>
+        </div>
+    </section>
+    </main>
     <script>
         // スムーススクロール
         const paginations = document.querySelectorAll(".pagination a");
@@ -80,6 +87,29 @@
                     activatePagination(entry.target);
                 }
             });
+        }
+
+        // マークダウンの基本設定
+        const markdown_setting = window.markdownit({
+            html: true, // htmlタグを有効にする
+            breaks: true, // md内の改行を<br>に変換
+        });
+
+        // .js-markdown-editerを定義
+        const markdown_editer = $(".js-markdown-editer");
+
+        // マークダウンの設定をjs-markdown-editerにHTMLとして反映させる
+        const markdown_html = markdown_setting.render(getHtml(markdown_editer));
+        markdown_editer.html(markdown_html);
+
+        // 比較演算子（=，<>，<，<=，>，>=）をそのまま置換する
+        function getHtml(selector) {
+            let markdown_text = $(selector).html();
+            markdown_text = markdown_text.replace(/&lt;/g, "<");
+            markdown_text = markdown_text.replace(/&gt;/g, ">");
+            markdown_text = markdown_text.replace(/&amp;/g, "&");
+
+            return markdown_text;
         }
     </script>
 </body>
