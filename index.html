@@ -148,9 +148,20 @@
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
         let selectValue = 2;
 
+        // ランダムなIDを生成する関数
+        function generateRandomId(length = 8) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
         function SendResetValue() {
             const resetValue = {
                 type: "keepAlive",
+                id: generateRandomId(),
                 x: 16,
                 y: 0,
                 z: 0,
@@ -206,6 +217,7 @@
         function sendAccelerationData(acceleration) {
             const dataToSend = {
                 type: "keepAlive",
+                id: generateRandomId(),
                 x: acceleration.x,
                 y: acceleration.y,
                 z: acceleration.z,
