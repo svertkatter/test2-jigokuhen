@@ -161,7 +161,7 @@
 
         function SendResetValue() {
             const resetValue = {
-                type: "keepAlive",
+                type: "accelerationData",
                 id: uniqueId,
                 x: 16,
                 y: 0,
@@ -218,7 +218,7 @@
 
         function sendAccelerationData(acceleration) {
             const dataToSend = {
-                type: "keepAlive",
+                type: "accelerationData",
                 id: uniqueId,
                 x: acceleration.x,
                 y: acceleration.y,
