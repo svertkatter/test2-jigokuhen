@@ -147,6 +147,7 @@
     <script>
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
         let selectValue = 2;
+        let uniqueId = "";
 
         // ランダムなIDを生成する関数
         function generateRandomId(length = 8) {
@@ -161,7 +162,7 @@
         function SendResetValue() {
             const resetValue = {
                 type: "keepAlive",
-                id: generateRandomId(),
+                id: uniqueId,
                 x: 16,
                 y: 0,
                 z: 0,
@@ -173,6 +174,7 @@
 
         //ページをロードした時
         window.onload = function () {
+            uniqueId = generateRandomId();
             SendResetValue();
         }
 
@@ -217,7 +219,7 @@
         function sendAccelerationData(acceleration) {
             const dataToSend = {
                 type: "keepAlive",
-                id: generateRandomId(),
+                id: uniqueId,
                 x: acceleration.x,
                 y: acceleration.y,
                 z: acceleration.z,
