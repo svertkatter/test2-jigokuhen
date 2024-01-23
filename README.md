@@ -4,7 +4,7 @@
 これは卒業制作『地獄變』において、スマホの加速度センサの値を取得し、それをWebSocketでTouchDesigner側に送るウェブである。
 
 ## ファイル構成
-<pre>
+```
 .
 ├── README.md
 ├── credit
@@ -12,7 +12,7 @@
 ├── index.html
 ├── reset.css
 └── style.css
-</pre>
+```
 
 ## 特記事項
 ### 外部JSファイルの不使用について
