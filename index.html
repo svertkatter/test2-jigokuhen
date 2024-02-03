@@ -268,94 +268,37 @@
             requestPermission();
         });
 
-
-        //scroll
-        // "use strict";
-            // スクロールスナップの対象となる要素のクラス名を更新
-            var sections = document.querySelectorAll('.section');
-            var prev_pos = window.pageYOffset;
-
-            var handleScroll = function handleScroll() {
-                var current_pos = window.pageYOffset;
-
-                // スクロールスナップ処理
-                for (var i = 0; i < sections.length - 1; i++) {
-                    var prev_offset = sections[i].offsetTop;
-                    var next_offset = sections[i + 1].offsetTop;
-
-                    if (current_pos > prev_offset && current_pos < next_offset) {
-                        if (current_pos > prev_pos) {
-                            window.scrollTo({
-                                top: next_offset,
-                                behavior: "smooth"
-                            });
-                        } else if (current_pos < prev_pos) {
-                            window.scrollTo({
-                                top: prev_offset,
-                                behavior: "smooth"
-                            });
-                        }
-                        break; // 最初に条件を満たしたセクションで処理を終了
-                    }
-                }
-
-                prev_pos = current_pos; // スクロール位置を更新
-            };
-
-            window.addEventListener('scroll', handleScroll, false);
-
-
-
         // スムーススクロール
-        // const paginations = document.querySelectorAll(".pagination a");
-        // paginations.forEach(pagination => {
-        //     pagination.addEventListener("click", e => {
-        //         e.preventDefault();
-        //         const targetId = e.target.hash;
-        //         const target = document.querySelector(targetId);
-        //         target.scrollIntoView({ behavior: "smooth" });
-        //     });
-        // });
-
-        // const paginations = document.querySelectorAll(".pagination a");
-        // paginations.forEach(pagination => {
-        //     pagination.addEventListener("click", e => {
-        //         e.preventDefault();
-        //         const targetId = e.target.hash;
-        //         const target = document.querySelector(targetId);
-
-        //         // targetの位置を取得
-        //         const targetRect = target.getBoundingClientRect();
-        //         const absoluteTargetTop = window.pageYOffset + targetRect.top;
-
-        //         // スムーススクロールを実行
-        //         window.scrollTo({
-        //             top: absoluteTargetTop,
-        //             behavior: "smooth"
-        //         });
-        //     });
-        // });
+        const paginations = document.querySelectorAll(".pagination a");
+        paginations.forEach(pagination => {
+            pagination.addEventListener("click", e => {
+                e.preventDefault();
+                const targetId = e.target.hash;
+                const target = document.querySelector(targetId);
+                target.scrollIntoView({ behavior: "smooth" });
+            });
+        });
 
         // Intersection Observer
-        // const sections = document.querySelectorAll(".section");
-        // const observerRoot = document.querySelector(".fullPageScroll");
-        // const options = {
-        //     root: observerRoot,
-        //     rootMargin: "-50% 0px",
-        //     threshold: 0
-        // };
-        // const observer = new IntersectionObserver(doWhenIntersect, options);
-        // sections.forEach(section => {
-        //     observer.observe(section);
-        // });
+        const sections = document.querySelectorAll(".section");
+        const observerRoot = document.querySelector(".fullPageScroll");
+        const options = {
+            root: observerRoot,
+            rootMargin: "-50% 0px",
+            threshold: 0
+        };
+        const observer = new IntersectionObserver(doWhenIntersect, options);
+        sections.forEach(section => {
+            observer.observe(section);
+        });
 
-        // function doWhenIntersect(entries) {
-        //     entries.forEach(entry => {
-        //         if (entry.isIntersecting) {
-        //             activatePagination(entry.target);
-        //         }
-        //     });
-        // }
+        function doWhenIntersect(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activatePagination(entry.target);
+                }
+            });
+        }
     </script>
 </body>
 
