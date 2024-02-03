@@ -133,18 +133,20 @@ p {
     flex-direction: column;
 }
 
-.section18 {
+.section18,
+.section19,
+.section20 {
     writing-mode: horizontal-tb;
 }
 
-.section18 .txt-box {
+.section20 .txt-box {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 1fr;
     width: fit-content;
 }
 
-.section18 button {
+.section20 button {
     appearance: none;
     margin-top: 2em;
     background: #E6E4D9;
