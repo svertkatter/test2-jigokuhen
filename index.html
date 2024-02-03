@@ -279,45 +279,45 @@
         //     });
         // });
 
-        const paginations = document.querySelectorAll(".pagination a");
-        paginations.forEach(pagination => {
-            pagination.addEventListener("click", e => {
-                e.preventDefault();
-                const targetId = e.target.hash;
-                const target = document.querySelector(targetId);
+        // const paginations = document.querySelectorAll(".pagination a");
+        // paginations.forEach(pagination => {
+        //     pagination.addEventListener("click", e => {
+        //         e.preventDefault();
+        //         const targetId = e.target.hash;
+        //         const target = document.querySelector(targetId);
 
-                // targetの位置を取得
-                const targetRect = target.getBoundingClientRect();
-                const absoluteTargetTop = window.pageYOffset + targetRect.top;
+        //         // targetの位置を取得
+        //         const targetRect = target.getBoundingClientRect();
+        //         const absoluteTargetTop = window.pageYOffset + targetRect.top;
 
-                // スムーススクロールを実行
-                window.scrollTo({
-                    top: absoluteTargetTop,
-                    behavior: "smooth"
-                });
-            });
-        });
+        //         // スムーススクロールを実行
+        //         window.scrollTo({
+        //             top: absoluteTargetTop,
+        //             behavior: "smooth"
+        //         });
+        //     });
+        // });
 
         // Intersection Observer
-        const sections = document.querySelectorAll(".section");
-        const observerRoot = document.querySelector(".fullPageScroll");
-        const options = {
-            root: observerRoot,
-            rootMargin: "-50% 0px",
-            threshold: 0
-        };
-        const observer = new IntersectionObserver(doWhenIntersect, options);
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        // const sections = document.querySelectorAll(".section");
+        // const observerRoot = document.querySelector(".fullPageScroll");
+        // const options = {
+        //     root: observerRoot,
+        //     rootMargin: "-50% 0px",
+        //     threshold: 0
+        // };
+        // const observer = new IntersectionObserver(doWhenIntersect, options);
+        // sections.forEach(section => {
+        //     observer.observe(section);
+        // });
 
-        function doWhenIntersect(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    activatePagination(entry.target);
-                }
-            });
-        }
+        // function doWhenIntersect(entries) {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             activatePagination(entry.target);
+        //         }
+        //     });
+        // }
     </script>
 </body>
 
