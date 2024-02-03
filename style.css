@@ -12,6 +12,18 @@ body {
     color: #4B4B4B;
 }
 
+a{
+    text-underline-position: bottom;
+    color: #2B2B2B;
+    transition: all .2s;
+}
+
+a:hover{
+    color: #9f9f9f;
+    text-decoration: none;
+    transition: all .2s;
+}
+
 p {
     font-feature-settings: "palt" 1;
 }
@@ -63,12 +75,12 @@ p {
     line-height: 2;
 }
 
-.credit div a,
+/* .credit div a,
 .policy div a,
 .policy a {
     text-underline-position: left;
     color: #2B2B2B;
-}
+} */
 
 .credit .txt-box {
     display: initial;
