@@ -268,42 +268,42 @@
             requestPermission();
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-        const sections = document.querySelectorAll(".section");
-        let isScrolling;
 
-        // スクロールイベントリスナー
-        window.addEventListener("scroll", function() {
-            window.clearTimeout(isScrolling);
+        //scroll
+        // "use strict";
+            // スクロールスナップの対象となる要素のクラス名を更新
+            var sections = document.querySelectorAll('.section');
+            var prev_pos = window.pageYOffset;
 
-            isScrolling = setTimeout(function() {
-                // スクロールが停止したら実行される
-                const scrollPosition = window.scrollY + window.innerHeight / 2; // 中央基準で最も近いセクションを見つける
+            var handleScroll = function handleScroll() {
+                var current_pos = window.pageYOffset;
 
-                let closestSectionDistance = Infinity;
-                let closestSectionIndex = 0;
+                // スクロールスナップ処理
+                for (var i = 0; i < sections.length - 1; i++) {
+                    var prev_offset = sections[i].offsetTop;
+                    var next_offset = sections[i + 1].offsetTop;
 
-                sections.forEach((section, index) => {
-                    const sectionTop = section.offsetTop;
-                    const sectionBottom = sectionTop + section.offsetHeight;
-                    // スクロール位置とセクションの距離を計算
-                    if (scrollPosition > sectionTop && scrollPosition < sectionBottom) {
-                        const distance = Math.min(Math.abs(scrollPosition - sectionTop), Math.abs(scrollPosition - sectionBottom));
-                        if (distance < closestSectionDistance) {
-                            closestSectionDistance = distance;
-                            closestSectionIndex = index;
+                    if (current_pos > prev_offset && current_pos < next_offset) {
+                        if (current_pos > prev_pos) {
+                            window.scrollTo({
+                                top: next_offset,
+                                behavior: "smooth"
+                            });
+                        } else if (current_pos < prev_pos) {
+                            window.scrollTo({
+                                top: prev_offset,
+                                behavior: "smooth"
+                            });
                         }
+                        break; // 最初に条件を満たしたセクションで処理を終了
                     }
-                });
+                }
 
-                // 最も近いセクションにスムーズスクロール
-                sections[closestSectionIndex].scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }, 66); // 66ミリ秒後にスクロール停止と判定
-        });
-    });
+                prev_pos = current_pos; // スクロール位置を更新
+            };
+
+            window.addEventListener('scroll', handleScroll, false);
+
 
 
         // スムーススクロール
