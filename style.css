@@ -2,6 +2,11 @@
     display: none;
 }
 
+body, html {
+    height: 100%;
+    overflow: hidden; /* ルート要素でのスクロールを無効化 */
+}
+
 body {
     -ms-overflow-style: none;
     scrollbar-width: none;
