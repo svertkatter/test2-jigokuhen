@@ -44,7 +44,8 @@ p {
     line-height: 2;
 }
 
-.credit_page .credit {
+.credit_page .credit,
+.credit_page .policy {
     display: block;
     writing-mode: initial;
     padding: 20%;
@@ -58,11 +59,13 @@ p {
     margin-left: 0;
 } */
 
-.credit div p {
+.credit div p{
     line-height: 2;
 }
 
-.credit div a {
+.credit div a,
+.policy div a,
+.policy a {
     text-underline-position: left;
     color: #2B2B2B;
 }
@@ -73,6 +76,37 @@ p {
 
 .credit {
     padding: 20em;
+}
+
+.policy{
+    line-height: 2em;
+}
+
+.policy .title {
+    margin-bottom: 2em;
+}
+
+.policy-list {
+    margin-top: 2em;
+}
+
+.policy-list p:first-child{
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.policy-list ul {
+    padding-left: 1.5em;
+}
+
+.list-title {
+    margin: 1em 0 0.5em;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.indent {
+    list-style-type: none;
 }
 
 .section1 {
