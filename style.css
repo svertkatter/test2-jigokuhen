@@ -36,6 +36,7 @@ p {
     /* scroll-snap-type: y mandatory;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch; */
+    -webkit-overflow-scrolling: touch;
 }
 
 .title {

@@ -18,6 +18,7 @@
         })(document);
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
@@ -268,37 +269,21 @@
             requestPermission();
         });
 
-        // スムーススクロール
-        const paginations = document.querySelectorAll(".pagination a");
-        paginations.forEach(pagination => {
-            pagination.addEventListener("click", e => {
-                e.preventDefault();
-                const targetId = e.target.hash;
-                const target = document.querySelector(targetId);
-                target.scrollIntoView({ behavior: "smooth" });
-            });
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".section").forEach((section, i, sections) => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top top+=1", // トリガーがビューポートの上端に達したらスナップ
+            end: () => `+=${section.offsetHeight}`, // セクションの高さに基づいて終了点を設定
+            // pin: true,
+            pinSpacing: false,
+            snap: 1, // 100%の位置でスナップ
+            // スナップの挙動をカスタマイズする場合は、snapオブジェクトを使用
+            // 例: snap: { snapTo: 1, duration: {min: 0.2, max: 0.3}, delay: 0.2, ease: "power1.inOut" }
+        });
         });
 
-        // Intersection Observer
-        const sections = document.querySelectorAll(".section");
-        const observerRoot = document.querySelector(".fullPageScroll");
-        const options = {
-            root: observerRoot,
-            rootMargin: "-50% 0px",
-            threshold: 0
-        };
-        const observer = new IntersectionObserver(doWhenIntersect, options);
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        function doWhenIntersect(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    activatePagination(entry.target);
-                }
-            });
-        }
     </script>
 </body>
 
