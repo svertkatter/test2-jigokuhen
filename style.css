@@ -32,8 +32,9 @@ p {
 
 .doc{
     display: flex;
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     gap: 1em;
+    text-align: center;
 }
 
 .doc:first-child{
@@ -138,7 +139,7 @@ p {
 }
 
 .section1 {
-    gap: 6em;
+    gap: 5em;
 }
 
 .txt-box {
