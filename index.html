@@ -19,6 +19,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"></script>
 </head>
 
 <body>
@@ -284,35 +285,36 @@
             requestPermission();
         });
 
-        const sections = document.querySelectorAll('.section');
-        let isScrolling = false;
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-        window.addEventListener('scroll', () => {
-            if (isScrolling) return;
-            isScrolling = true;
+const sections = document.querySelectorAll('.section');
+let isScrolling = false;
 
-            clearTimeout(window.scrollTimeout);
-            window.scrollTimeout = setTimeout(() => {
-                const scrollPosition = window.pageYOffset;
-                let closestSection = null;
-                let closestDistance = Infinity;
+window.addEventListener('scroll', () => {
+  if (isScrolling) return;
+  isScrolling = true;
 
-                sections.forEach((section) => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    const distance = Math.abs(scrollPosition - sectionTop);
+  clearTimeout(window.scrollTimeout);
+  window.scrollTimeout = setTimeout(() => {
+    const scrollPosition = window.pageYOffset;
+    let closestSection = null;
+    let closestDistance = Infinity;
 
-                    if (distance < closestDistance) {
-                        closestSection = section;
-                        closestDistance = distance;
-                    }
-                });
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const distance = Math.abs(scrollPosition - sectionTop);
 
-                if (closestSection) {
-                    gsap.to(window, { scrollTo: { y: closestSection.offsetTop, autoKill: true }, duration: 1, onComplete: () => isScrolling = false });
-                }
-            }, 100);
-        });
+      if (distance < closestDistance) {
+        closestSection = section;
+        closestDistance = distance;
+      }
+    });
+
+    if (closestSection) {
+      gsap.to(window, { scrollTo: { y: closestSection.offsetTop, autoKill: true }, duration: 1, onComplete: () => isScrolling = false });
+    }
+  }, 10);
+});
 
         // gsap.registerPlugin(ScrollTrigger);
 
