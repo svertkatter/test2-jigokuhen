@@ -296,8 +296,8 @@
             if (isAnimating) return; // すでにアニメーション実行中なら何もしない
             isAnimating = true; // アニメーション実行中フラグを立てる
             gsap.to(window, {
-                scrollTo: { y: section.offsetTop, autoKill: false },
-                duration: 1.5,
+                scrollTo: { y: section, autoKill: false },
+                duration: 1.0,
                 onComplete: () => {
                     isAnimating = false; // アニメーション完了後にフラグを下ろす
                 }
