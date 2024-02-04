@@ -42,7 +42,7 @@ p {
 
 .fullPageScroll {
     width: 100%;
-    height: 100dvh;
+    height: 100lvh;
     /* scroll-snap-type: y mandatory; */
     /* overflow-y: auto; */
     -webkit-overflow-scrolling: touch;
@@ -54,7 +54,7 @@ p {
 
 .section {
     width: 100%;
-    height: 100dvh;
+    height: 100lvh;
     /* height: 100lvh; */
     padding: 7em 10% 10% 10%;
     /* scroll-snap-align: start; */
