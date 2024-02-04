@@ -27,7 +27,7 @@ a:hover{
 }
 
 p {
-    font-feature-settings: "palt" 1;
+    font-feature-settings: "palt";
 }
 
 .doc{
@@ -206,4 +206,10 @@ p {
     grid-auto-flow: column;
     writing-mode: vertical-rl;
     letter-spacing: .2em;
+}
+
+@media (max-width: 500px){
+    .credit_page .credit, .credit_page .policy{
+        padding: 15%;
+    }
 }

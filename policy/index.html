@@ -19,7 +19,16 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-    </script>
+    <script src="https://unpkg.com/palt-typesetting@0.2.1/bundle/typesetter.min.js"></script>
+    <script>
+        // Typesetter のインスタンスを作成
+        const typesetter = new Typesetter()
+      
+        // セレクターにマッチする要素に対して組版を適用
+        typesetter.renderToSelector('.txt-box')
+        const elements = document.querySelectorAll('.txt-box')
+        typesetter.renderToElements(elements)
+      </script>
 </head>
 
 <body>
