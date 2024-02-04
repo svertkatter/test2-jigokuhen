@@ -30,6 +30,16 @@ p {
     font-feature-settings: "palt" 1;
 }
 
+.doc{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1em;
+}
+
+.doc:first-child{
+    padding-right: 1em;
+}
+
 .fullPageScroll {
     width: 100%;
     height: 100dvh;
@@ -122,6 +132,10 @@ p {
 
 .indent {
     list-style-type: none;
+}
+
+.indent:last-child{
+    margin-bottom: 1em;
 }
 
 .section1 {
