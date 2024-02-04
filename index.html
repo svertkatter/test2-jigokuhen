@@ -285,77 +285,43 @@
             requestPermission();
         });
 
+
+
         gsap.registerPlugin(ScrollTrigger);
 
-        let startTouchY = 0;
-        let endTouchY = 0;
-        let isScrolling = false; // スクロール中かどうかを追跡
-
-        document.addEventListener('touchstart', (e) => {
-            if (isScrolling) return; // スクロール中はタッチイベントを無視
-            startTouchY = e.touches[0].clientY;
-        }, false);
-
-        document.addEventListener('touchend', (e) => {
-            if (isScrolling) return; // スクロール中はタッチイベントを無視
-            endTouchY = e.changedTouches[0].clientY;
-
-            const deltaY = startTouchY - endTouchY;
-            if (Math.abs(deltaY) < 50) return; // 小さなスワイプは無視
-
-            const sections = gsap.utils.toArray(".section");
-            let targetSectionIndex = sections.findIndex(section => {
-                const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
-                return deltaY > 0 ? sectionTop > window.pageYOffset : sectionTop < window.pageYOffset;
-            });
-
-            if (targetSectionIndex === -1 || targetSectionIndex === sections.length) return; // 範囲外なら無視
-            if (deltaY < 0) targetSectionIndex = Math.max(0, targetSectionIndex - 1); // 上にフリック
-
-            isScrolling = true;
-            const targetOffsetTop = sections[targetSectionIndex].offsetTop - (window.innerHeight - sections[targetSectionIndex].offsetHeight) / 2;
-            gsap.to(window, {
-                scrollTo: { y: targetOffsetTop, autoKill: false },
-                duration: 0.8,
-                onComplete: () => isScrolling = false
-            });
-        }, false);
-
         gsap.utils.toArray(".section").forEach((section, i, sections) => {
-            ScrollTrigger.create({
-                trigger: section,
-                start: "top top+=1",
-                end: () => `+=${section.offsetHeight}`,
-                pinSpacing: false,
-                snap: {
-                    snapTo: 1,
-                    duration: 0.2,
-                    delay: 0,
-                    ease: "power1.inOut",
-                },
-            });
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top top+=1", // トリガーがビューポートの上端に達したらスナップ
+            end: () => `+=${section.offsetHeight}`, // セクションの高さに基づいて終了点を設定
+            // pin: true,
+            // pinSpacing: false,
+            snap: {
+                snapTo: 1,
+                duration: 0.1,
+                delay: 0,
+                ease: "power1.inOut",
+            }, // 100%の位置でスナップ
+            // スナップの挙動をカスタマイズする場合は、snapオブジェクトを使用
+            // 例: snap: { snapTo: 1, duration: {min: 0.2, max: 0.3}, delay: 0.2, ease: "power1.inOut" }
         });
-
-
-        // gsap.registerPlugin(ScrollTrigger);
-
-        // gsap.utils.toArray(".section").forEach((section, i, sections) => {
-        // ScrollTrigger.create({
-        //     trigger: section,
-        //     start: "top top+=1", // トリガーがビューポートの上端に達したらスナップ
-        //     end: () => `+=${section.offsetHeight}`, // セクションの高さに基づいて終了点を設定
-        //     // pin: true,
-        //     pinSpacing: false,
-        //     snap: {
-        //         snapTo: 1,
-        //         duration: 0.2,
-        //         delay: 0,
-        //         ease: "power1.inOut",
-        //     }, // 100%の位置でスナップ
-        //     // スナップの挙動をカスタマイズする場合は、snapオブジェクトを使用
-        //     // 例: snap: { snapTo: 1, duration: {min: 0.2, max: 0.3}, delay: 0.2, ease: "power1.inOut" }
-        // });
-        // });
+        const text = section.querySelector('.txt-box');
+  if (text) {
+    gsap.fromTo(text,
+      { opacity: 0, filter: 'blur(10px)' },
+      {
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 1, // アニメーションの持続時間
+        scrollTrigger: {
+          trigger: section,
+          start: "top center", // ビューポートの中央にテキストが来たらアニメーション開始
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  }
+        });
 
     </script>
 </body>
