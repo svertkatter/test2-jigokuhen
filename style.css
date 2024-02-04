@@ -51,6 +51,7 @@ p {
 
 .title {
     font-size: 1.7em;
+    margin-top: -1em;
 }
 
 .section {
@@ -140,6 +141,7 @@ p {
 
 .section1 {
     gap: 4em;
+    padding-top: 0;
 }
 
 .txt-box {
