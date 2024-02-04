@@ -307,11 +307,10 @@
         sections.forEach((section) => {
             ScrollTrigger.create({
                 trigger: section,
-                // start: "top top+=1",
-                end: "bottom top+=1",
+                end: "bottom+=10 top+=10",
                 onEnter: () => goToSection(section),
                 onEnterBack: () => goToSection(section),
-                markers: false
+                markers: true
             });
         });
 
