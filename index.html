@@ -163,6 +163,7 @@
         </section>
     </div>
     <script>
+
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
         let selectValue = 2;
         let uniqueId = "";
@@ -285,43 +286,75 @@
             requestPermission();
         });
 
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+        let isAnimating = false; // スクロールアニメーション実行中かどうかを追跡するフラグ
 
-        gsap.registerPlugin(ScrollTrigger);
+        const sections = document.querySelectorAll(".section");
 
-        gsap.utils.toArray(".section").forEach((section, i, sections) => {
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top top+=1", // トリガーがビューポートの上端に達したらスナップ
-            end: () => `+=${section.offsetHeight}`, // セクションの高さに基づいて終了点を設定
-            // pin: true,
-            // pinSpacing: false,
-            snap: {
-                snapTo: 1,
-                duration: 0.1,
-                delay: 0,
-                ease: "power1.inOut",
-            }, // 100%の位置でスナップ
-            // スナップの挙動をカスタマイズする場合は、snapオブジェクトを使用
-            // 例: snap: { snapTo: 1, duration: {min: 0.2, max: 0.3}, delay: 0.2, ease: "power1.inOut" }
-        });
-        const text = section.querySelector('.txt-box');
-  if (text) {
-    gsap.fromTo(text,
-      { opacity: 0, filter: 'blur(10px)' },
-      {
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 1, // アニメーションの持続時間
-        scrollTrigger: {
-          trigger: section,
-          start: "top center", // ビューポートの中央にテキストが来たらアニメーション開始
-          toggleActions: "play none none none"
+        function goToSection(section) {
+            if (isAnimating) return; // すでにアニメーション実行中なら何もしない
+            isAnimating = true; // アニメーション実行中フラグを立てる
+            gsap.to(window, {
+                scrollTo: { y: section.offsetTop, autoKill: false },
+                duration: 1.5,
+                onComplete: () => {
+                    isAnimating = false; // アニメーション完了後にフラグを下ろす
+                }
+            });
         }
-      }
-    );
-  }
+
+        sections.forEach((section) => {
+            ScrollTrigger.create({
+                trigger: section,
+                // start: "top top+=1",
+                end: "bottom top+=1",
+                onEnter: () => goToSection(section),
+                onEnterBack: () => goToSection(section),
+                markers: false
+            });
         });
+
+        ScrollTrigger.addEventListener("scrollEnd", () => console.log("scrollEnd"));
+
+
+
+
+        // gsap.registerPlugin(ScrollTrigger);
+
+        // gsap.utils.toArray(".section").forEach((section, i, sections) => {
+        //     ScrollTrigger.create({
+        //         trigger: section,
+        //         start: "top top+=1", // トリガーがビューポートの上端に達したらスナップ
+        //         end: () => `+=${section.offsetHeight}`, // セクションの高さに基づいて終了点を設定
+        //         // pin: true,
+        //         // pinSpacing: false,
+        //         snap: {
+        //             snapTo: 1,
+        //             duration: 0.1,
+        //             delay: 0,
+        //             ease: "power1.inOut",
+        //         }, // 100%の位置でスナップ
+        //         // スナップの挙動をカスタマイズする場合は、snapオブジェクトを使用
+        //         // 例: snap: { snapTo: 1, duration: {min: 0.2, max: 0.3}, delay: 0.2, ease: "power1.inOut" }
+        //     });
+        //     const text = section.querySelector('.txt-box');
+        //     if (text) {
+        //         gsap.fromTo(text,
+        //             { opacity: 0, filter: 'blur(10px)' },
+        //             {
+        //                 opacity: 1,
+        //                 filter: 'blur(0px)',
+        //                 duration: 1, // アニメーションの持続時間
+        //                 scrollTrigger: {
+        //                     trigger: section,
+        //                     start: "top center", // ビューポートの中央にテキストが来たらアニメーション開始
+        //                     toggleActions: "play none none none"
+        //                 }
+        //             }
+        //         );
+        //     }
+        // });
 
     </script>
 </body>
