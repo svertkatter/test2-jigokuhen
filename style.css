@@ -32,7 +32,7 @@ p {
 
 .doc{
     display: flex;
-    /* flex-direction: column-reverse; */
+    flex-direction: column-reverse;
     gap: 1em;
     text-align: center;
 }
