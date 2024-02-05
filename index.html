@@ -147,7 +147,8 @@
                 <button id="permissionButton">あなたの家臣を一人、牛車にお乗せください。」
                 </button>
                 <button id="resetButton">私の娘を、どうぞ牛車にお乗せください。」</button>
-                <p class="desc">ここから先はスマートフォンの加速度センサを使用します。<br>
+                <p class="desc">どちらか選択してください。<br>
+                    ここから先はスマートフォンの加速度センサを使用します。<br>
                     推奨環境については、<a href="requirements/index.html">こちら</a>をご覧ください。<br>
                     iOS 13以上の方は表示されるポップアップを許可してください。</p>
             </div>
@@ -334,6 +335,7 @@
             isAnimating = true;
             gsap.to(window, {
                 scrollTo: { y: section, autoKill: false },
+                // 秒数を0.8以下にするとループする。
                 duration: 0.9,
                 onComplete: () => {
                     isAnimating = false;
