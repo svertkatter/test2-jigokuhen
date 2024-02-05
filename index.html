@@ -147,6 +147,9 @@
                 <button id="permissionButton">あなたの家臣を一人、牛車にお乗せください。」
                 </button>
                 <button id="resetButton">私の娘を、どうぞ牛車にお乗せください。」</button>
+                <p class="desc">ここから先はスマートフォンの加速度センサを使用します。<br>
+                    推奨環境については、<a href="requirements/index.html">こちら</a>をご覧ください。<br>
+                    iOS 13以上の方は表示されるポップアップを許可してください。</p>
             </div>
             <div class="back">
                 <div class="mssg">
@@ -291,7 +294,12 @@
             if (textBox) {
                 const paragraphs = textBox.querySelectorAll('p, button');
                 paragraphs.forEach((el, index) => {
-                    const addDelay = el.tagName.toLowerCase() === 'button' ? 0.5 : 0;
+                    let addDelay = 0;
+                    if (el.tagName.toLowerCase() === 'button') {
+                        addDelay = 0.5;
+                    } else if (el.classList.contains('desc')) {
+                        addDelay = 0.7; // .descクラスを持つ要素の場合の追加遅延
+                    }
                     gsap.fromTo(el,
                         { opacity: 0, filter: 'blur(20px)', y: 20 },
                         {
