@@ -321,7 +321,7 @@
             // セクションのスクロールアニメーションのためのScrollTrigger
             ScrollTrigger.create({
                 trigger: section,
-                end: "bottom top+=10",
+                end: "bottom+=10 top+=10",
                 onEnter: () => goToSection(section),
                 onEnterBack: () => goToSection(section),
                 markers: false
@@ -333,7 +333,7 @@
             if (isAnimating) return;
             isAnimating = true;
             gsap.to(window, {
-                scrollTo: { y: section.offsetTop, autoKill: false },
+                scrollTo: { y: section, autoKill: false },
                 duration: 0.5,
                 onComplete: () => {
                     isAnimating = false;
