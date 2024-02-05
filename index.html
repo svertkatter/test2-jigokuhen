@@ -24,7 +24,8 @@
             <div class="txt-box">
                 <p>それはある画師が描いた屏風絵。</p>
                 <p>この屏風絵にはある逸話がある。</p>
-                <p>あなたはその画師となり、<br>逸話を追体験する……。</p>
+                <p>あなたはその画師となり、</p>
+                <p>逸話を追体験する……。</p>
             </div>
         </section>
         <section id="section2" class="section section2">
@@ -89,7 +90,8 @@
         <section id="section11" class="section section11">
             <div class="txt-box">
                 <p>あなたはその画を描くために、殿様に直接お願いしようと考えました。</p>
-                <p>しかし、それだけでは駄目だと気付いていました。<br>直接お願いし、牛車を燃やしてしまうだけでは、最後の画を描けないと、<br>足りないと、あなたは本能的に感じていました。</p>
+                <p>しかし、それだけでは駄目だと気付いていました。</p>
+                <p>直接お願いし、牛車を燃やしてしまうだけでは、最後の画を描けないと、<br>足りないと、あなたは本能的に感じていました。</p>
             </div>
         </section>
         <section id="section12" class="section section12">
@@ -279,23 +281,36 @@
 
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-        let isAnimating = false; // スクロールアニメーション実行中かどうかを追跡するフラグ
+        let isAnimating = false;
 
         const sections = document.querySelectorAll(".section");
 
-        function goToSection(section) {
-            if (isAnimating) return; // すでにアニメーション実行中なら何もしない
-            isAnimating = true; // アニメーション実行中フラグを立てる
-            gsap.to(window, {
-                scrollTo: { y: section, autoKill: false },
-                duration: 1.0,
-                onComplete: () => {
-                    isAnimating = false; // アニメーション完了後にフラグを下ろす
-                }
-            });
-        }
-
         sections.forEach((section) => {
+            // テキストアニメーションのためのScrollTrigger
+            const textBox = section.querySelector('.txt-box');
+            if (textBox) {
+                const paragraphs = textBox.querySelectorAll('p, button');
+                paragraphs.forEach((el, index) => {
+                    const addDelay = el.tagName.toLowerCase() === 'button' ? 0.5 : 0;
+                    gsap.fromTo(el,
+                        { opacity: 0, filter: 'blur(20px)', y: 20 },
+                        {
+                            opacity: 1, filter: 'blur(0px)', y: 0,
+                            duration: 1.0,
+                            delay: index * 0.3 + addDelay, // 各<p>タグのアニメーション開始を段階的に遅らせる.
+                            scrollTrigger: {
+                                trigger: section,
+                                start: "top center+=100", // ビューポートの中央より少し前にアニメーションを開始
+                                toggleActions: "play none none none",
+                                onEnter: () => { if (!isAnimating) goToSection(section); },
+                                onEnterBack: () => { if (!isAnimating) goToSection(section); },
+                            }
+                        }
+                    );
+                });
+            }
+
+            // セクションのスクロールアニメーションのためのScrollTrigger
             ScrollTrigger.create({
                 trigger: section,
                 end: "bottom+=10 top+=10",
@@ -305,7 +320,21 @@
             });
         });
 
+
+        function goToSection(section) {
+            if (isAnimating) return;
+            isAnimating = true;
+            gsap.to(window, {
+                scrollTo: { y: section.offsetTop, autoKill: false },
+                duration: 0.5,
+                onComplete: () => {
+                    isAnimating = false;
+                }
+            });
+        }
+
         ScrollTrigger.addEventListener("scrollEnd", () => console.log("scrollEnd"));
+
 
 
 
