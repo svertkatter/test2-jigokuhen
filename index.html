@@ -321,7 +321,7 @@
             // セクションのスクロールアニメーションのためのScrollTrigger
             ScrollTrigger.create({
                 trigger: section,
-                end: "bottom+=10 top+=10",
+                end: "bottom top+=10",
                 onEnter: () => goToSection(section),
                 onEnterBack: () => goToSection(section),
                 markers: false
