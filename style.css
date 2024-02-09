@@ -14,13 +14,13 @@ body {
     color: #4B4B4B;
 }
 
-a{
+a {
     text-underline-position: bottom;
     color: #2B2B2B;
     transition: all .2s;
 }
 
-a:hover{
+a:hover {
     color: #9f9f9f;
     text-decoration: none;
     transition: all .2s;
@@ -30,14 +30,14 @@ p {
     font-feature-settings: "palt";
 }
 
-.doc{
+.doc {
     display: flex;
     /* flex-direction: column-reverse; */
     gap: 1em;
     text-align: center;
 }
 
-.doc:first-child{
+.doc:first-child {
     padding-right: 1em;
 }
 
@@ -54,9 +54,63 @@ p {
     margin-top: -1em;
 }
 
+.sprite-anim {
+    width: 20%;
+    height: auto;
+}
+
+.sprite-anim .sprite-anim_image {
+    display: inline-block;
+    opacity: 1;
+    width: 480px;
+    height: 270px;
+    mask-image: url("./img/noise1.png");
+    mask-repeat: no-repeat;
+    mask-position: 0 0;
+    /* Chrome, Sarafi用 */
+    -webkit-mask-image: url("./img/noise1.png");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: 0 0;
+    animation: sprite-animation 2.5s steps(40) forwards;
+}
+
+@keyframes sprite-animation {
+    0% {
+        mask-position: 0 0;
+        -webkit-mask-position: 0 0;
+    }
+
+    100% {
+        /* スプライトイメージ全体の幅 - 1フレームの幅 */
+        mask-position: calc((7736px - 967px) * -1) 0;
+        -webkit-mask-position: calc((7736px - 967px) * -1) 0;
+    }
+}
+
+@keyframes hello {
+    0% {
+        stroke-dashoffset: 2000;
+        fill: transparent;
+    }
+
+    40% {
+        stroke-dashoffset: 2000;
+        fill: transparent;
+    }
+
+    50% {
+        fill: transparent;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        fill: #000;
+    }
+}
+
 .policy,
-.credit{
-    .title{
+.credit {
+    .title {
         margin-top: 0;
     }
 }
@@ -88,11 +142,11 @@ p {
     margin-left: 0;
 } */
 
-.credit div p{
+.credit div p {
     line-height: 2;
 }
 
-.cre-list{
+.cre-list {
     margin-top: 1em;
 }
 
@@ -111,7 +165,7 @@ p {
     padding: 20em;
 }
 
-.policy{
+.policy {
     line-height: 2em;
 }
 
@@ -123,7 +177,7 @@ p {
     margin-top: 2em;
 }
 
-.policy-list p:first-child{
+.policy-list p:first-child {
     font-size: 1.5em;
     margin-bottom: 0.5em;
 }
@@ -142,7 +196,7 @@ p {
     list-style-type: none;
 }
 
-.indent:last-child{
+.indent:last-child {
     margin-bottom: 1em;
 }
 
@@ -182,7 +236,7 @@ p {
     font-style: normal;
 }
 
-.desc{
+.desc {
     font-size: 0.7em;
     margin-top: 2em;
 }
@@ -213,8 +267,10 @@ p {
     letter-spacing: .2em;
 }
 
-@media (max-width: 500px){
-    .credit_page .credit, .credit_page .policy{
+@media (max-width: 500px) {
+
+    .credit_page .credit,
+    .credit_page .policy {
         padding: 15%;
     }
 }
