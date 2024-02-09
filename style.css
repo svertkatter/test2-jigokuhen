@@ -303,6 +303,14 @@ p {
     margin-top: 0;
 }
 
+.gensaku p:nth-child(2){
+    margin: 0;
+}
+
+.gensaku{
+    font-weight: 700;
+    margin-bottom: 4em;
+}
 
 #accelerationMessage{
     background: #E6E4D9;
