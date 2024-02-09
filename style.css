@@ -281,7 +281,7 @@ p {
     writing-mode: horizontal-tb;
     /* overflow: scroll; */
     text-align: left;
-    margin-top: 1em;
+    margin-top: 1.5em;
 }
 
 .acc p{
@@ -296,6 +296,10 @@ p {
     background: #E6E4D9;
     opacity: 0;
     z-index: 999999;
+}
+
+.mar{
+    margin-top: 1.5em;
 }
 
 @media (max-width: 500px) {
