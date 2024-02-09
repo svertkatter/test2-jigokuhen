@@ -275,6 +275,10 @@ p {
         height: 225px;
     }
 
+    .section1{
+        gap: 2em;
+    }
+
     .credit_page .credit,
     .credit_page .policy {
         padding: 15%;
