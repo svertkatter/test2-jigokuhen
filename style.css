@@ -316,10 +316,11 @@ p {
     background: #E6E4D9;
     opacity: 0;
     z-index: 999999;
+    overflow: scroll;
 }
 
 .mar{
-    margin-top: 1.5em;
+    margin-top: 8.5em;
     text-align: center;
 }
 
