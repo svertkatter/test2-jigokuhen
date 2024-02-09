@@ -271,7 +271,7 @@ p {
 
 #accelerationMessage{
     background: #E6E4D9;
-    opacity: 0;
+    /* opacity: 0; */
     z-index: 999999;
 }
 
