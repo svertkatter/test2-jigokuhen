@@ -59,10 +59,13 @@ p {
     height: auto;
 }
 
-.sprite-anim .sprite-anim_image {
-    display: inline-block;
+#mask{
     width: 480px;
     height: 270px;
+}
+
+.sprite-anim_image {
+    /* display: inline-block; */
     mask-image: url("./img/noise1.png");
     mask-repeat: no-repeat;
     mask-position: 0 0;
@@ -71,12 +74,6 @@ p {
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: 0 0;
     animation: sprite-animation 2.5s steps(40) forwards;
-}
-
-::-webkit-full-page-media, :future, :root .sprite-anim_image{
-    width: 100%;
-    height: 100%;
-    transform: translateY(20px);
 }
 
 @keyframes sprite-animation {

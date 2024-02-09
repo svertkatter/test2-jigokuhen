@@ -11,20 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js"></script>
-    <script>
-        new Vivus('mask', {//svgに指定したid名
-            type: 'scenario-sync',// アニメーションのタイプを設定
-            duration: 130,//アニメーションの時間。数字が小さくなれば速くなり、大きくなれば遅くなる
-            forceRender: false,//パスが更新された場合に再レンダリングさせない
-            animTimingFunction: Vivus.EASE_OUT,//動きの加速減速設定
-        });
-    </script>
 </head>
 
 <body>
     <div id="main" class="fullPageScroll">
-        <section id="section1" class="section section1">
+        <section id="section1" class="section section1 sprite-anim_image">
             <!-- <p class="title">地獄變</p> -->
             <div class="sprite-anim">
                 <svg id="mask" class="sprite-anim_image" width="232" height="653" viewBox="0 0 232 653" fill="none"
