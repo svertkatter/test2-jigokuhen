@@ -259,7 +259,6 @@ p {
     height: 100vh;
     height: 100dvh;
     padding: 10%;
-    scroll-snap-align: start;
     display: grid;
     grid-template-columns: auto;
     place-content: center;
@@ -267,6 +266,11 @@ p {
     grid-auto-flow: column;
     writing-mode: vertical-rl;
     letter-spacing: .2em;
+}
+
+#accelerationMessage{
+    background: #E6E4D9;
+    z-index: 999999;
 }
 
 @media (max-width: 500px) {

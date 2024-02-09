@@ -170,7 +170,7 @@
                 <div class="mssg">
                     <p>スマホを筆のように、屏風の前で振ってください。</p>
                 </div>
-                <div id="accelerationMessage" style="display: none; background: #E6E4D9;">
+                <div id="accelerationMessage">
                     <p>加速度センサのYの値が16以上です！</p>
                     <a href="#section20">選択肢に戻る</a>
                 </div>
@@ -299,7 +299,7 @@
                 sendAccelerationData(acceleration);
 
                 if (acceleration.y > 16) {
-                    document.getElementById('accelerationMessage').style.display = 'block';
+                    gsap.fromTo('#accelerationMessage',{autoAlpha: 0}, { duration: 1, autoAlpha: 1 });
                 }
             });
         }
