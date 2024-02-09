@@ -300,6 +300,7 @@ p {
 
 .mar{
     margin-top: 1.5em;
+    text-align: center;
 }
 
 @media (max-width: 500px) {
