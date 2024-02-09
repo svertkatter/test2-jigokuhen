@@ -265,8 +265,16 @@ p {
     place-content: center;
     place-items: center;
     grid-auto-flow: column;
-    writing-mode: vertical-rl;
     letter-spacing: .2em;
+}
+
+.mssg{
+    writing-mode: vertical-rl;
+}
+
+.acc{
+    writing-mode: horizontal-tb;
+    overflow: scroll;
 }
 
 #accelerationMessage{

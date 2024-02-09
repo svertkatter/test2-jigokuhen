@@ -171,8 +171,12 @@
                     <p>スマホを筆のように、屏風の前で振ってください。</p>
                 </div>
                 <div id="accelerationMessage" class="acc" style="display: none;">
-                    <p>加速度センサのYの値が16以上です！</p>
-                    <a href="#section20">選択肢に戻る</a>
+                    <p>体験していただきありがとうございます。</p>
+                    <p>このお話は芥川龍之介『地獄変』という小説を原作としています。</p>
+                    <p>完成した絵は今どのようになっていますか。</p>
+                    <p>下書きの通りになっていますか。それとも少し違っていますか。</p>
+                    <p>あなたの選択した結末によって絵は少しずつ変わります。もう一度試してみたい場合はブラウザをリロードして見てください。</p>
+                    <p>クレジットは<a href="/credit">こちら</a>からご覧ください。</p>
                 </div>
             </div>
         </section>
@@ -305,7 +309,7 @@
                     hyouji.to(
                         '.mssg', { autoAlpha: 0, opacity: 0,display: 'none', duration: 0.5, ease: Power2.easeInOut }
                         ).fromTo(
-                            '.acc', {autoAlpha: 0, display: 'none', opacity: 0},{ autoAlpha: 1, display: 'grid', opacity: 1, duration: 0.5, ease: Power2.easeInOut }
+                            '.acc', {autoAlpha: 0, display: 'none', opacity: 0},{ autoAlpha: 1, display: 'grid', opacity: 1, duration: 1, ease: Power2.easeInOut }
                         );
                     
                 }
