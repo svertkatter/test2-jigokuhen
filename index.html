@@ -303,7 +303,7 @@
                     // document.querySelector(".mssg").style.display = "none";
                     const hyouji = gsap.timeline();
                     hyouji.to(
-                        '.mssg', { autoAlpha: 0, opacity: 0, duration: 0.5, ease: Power2.easeInOut }
+                        '.mssg', { autoAlpha: 0, opacity: 0,display: 'none', duration: 0.5, ease: Power2.easeInOut }
                         ).fromTo(
                             '.acc', {autoAlpha: 0, display: 'none', opacity: 0},{ autoAlpha: 1, display: 'grid', opacity: 1, duration: 0.5, ease: Power2.easeInOut }
                         );
