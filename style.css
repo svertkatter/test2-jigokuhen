@@ -286,12 +286,17 @@ p {
 .acc{
     writing-mode: horizontal-tb;
     /* overflow: scroll; */
-    text-align: left;
-    margin-top: 1.5em;
+    
 }
 
 .acc p{
     text-indent: 1em;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+.acc small{
+    margin-top: 5em;
 }
 
 .acc:first-child{
@@ -308,6 +313,8 @@ p {
     margin-top: 1.5em;
     text-align: center;
 }
+
+#accel
 
 .title-box{
     display: flex;
