@@ -64,6 +64,11 @@ p {
     height: 270px;
 }
 
+.acc #mask{
+    width: 200px;
+    height: 113px;
+}
+
 .sprite-anim_image {
     /* display: inline-block; */
     mask-image: url("./img/noise1.png");
@@ -274,8 +279,17 @@ p {
 
 .acc{
     writing-mode: horizontal-tb;
-    overflow: scroll;
+    /* overflow: scroll; */
     text-align: left;
+    margin-top: 1em;
+}
+
+.acc p{
+    text-indent: 1em;
+}
+
+.acc:first-child{
+    margin-top: 0;
 }
 
 #accelerationMessage{
