@@ -277,6 +277,8 @@ p {
 
     .section1{
         gap: 2em;
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
     }
 
     .credit_page .credit,
