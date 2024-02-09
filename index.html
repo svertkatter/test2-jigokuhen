@@ -299,8 +299,12 @@
                 sendAccelerationData(acceleration);
 
                 if (event.acceleration.y > 16) {
-                    document.querySelector(".acc").style.display = "grid";
-                    document.querySelector(".mssg").style.display = "none";
+                    // document.querySelector(".acc").style.display = "grid";
+                    // document.querySelector(".mssg").style.display = "none";
+                    const hyouji = gsap.timeline();
+                    hyouji.to('.mssg', { autoAlpha: 0, opacity: 0, duration: 0.5, ease: Power2.easeInOut }),
+                    to('.acc', { autoAlpha: 1, display: 'grid', opacity: 1, duration: 0.5, ease: Power2.easeInOut });
+                    
                 }
             });
         }
