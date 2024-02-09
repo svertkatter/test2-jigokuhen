@@ -254,8 +254,7 @@ p {
     z-index: 99999;
 }
 
-.back .mssg,
-.back .acc {
+.back .mssg{
     width: 100%;
     height: 100vh;
     height: 100dvh;
