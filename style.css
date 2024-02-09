@@ -18,6 +18,7 @@ a {
     text-underline-position: bottom;
     color: #2B2B2B;
     transition: all .2s;
+    word-break: break-word;
 }
 
 a:hover {
@@ -64,7 +65,12 @@ p {
     height: 270px;
 }
 
-.acc #mask{
+/* #mask path{
+    fill: #4B4B4B;
+} */
+
+.acc #mask,
+.policy #mask{
     width: 200px;
     height: 113px;
 }
@@ -154,7 +160,7 @@ p {
 }
 
 .cre-list {
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 /* .credit div a,
@@ -301,6 +307,42 @@ p {
 .mar{
     margin-top: 1.5em;
     text-align: center;
+}
+
+.title-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.credit .txt-box{
+    text-align: center;
+}
+
+.credit .txt-box .policy-list ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.title-box .title{
+    margin: 0;
+}
+
+.title-box .mar{
+    margin: 0;
+}
+
+.credit .policy-list {
+    margin-top: 7em;
+}
+
+.credit .policy-list p:first-child {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.license .list-title{
+    margin-top: 3em;
 }
 
 @media (max-width: 500px) {
