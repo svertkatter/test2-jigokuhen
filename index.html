@@ -299,7 +299,7 @@
                 sendAccelerationData(acceleration);
 
                 if (acceleration.y > 16) {
-                    gsap.fromTo('#accelerationMessage',{autoAlpha: 0,opacity: 0, display: none}, { opacity: 1, display: block, autoAlpha: 1 });
+                    gsap.fromTo('#accelerationMessage',{autoAlpha: 0,opacity: 0, display: none}, {display: grid,duration: 1, opacity: 1, autoAlpha: 1 });
                 }
             });
         }
