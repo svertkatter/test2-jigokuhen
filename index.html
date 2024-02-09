@@ -183,6 +183,7 @@
         </section>
     </div>
     <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         let ws = new WebSocket('wss://our-socket-server.onrender.com:443');
         let selectValue = 2;
@@ -227,8 +228,34 @@
             SendResetValue();
         }
 
+        // 推奨環境とかプライバシーポリシーの出現
+        const tl2 = gsap.timeline();
 
-        //gsap
+        const doc = document.querySelector(".doc");
+        const docp = doc.querySelectorAll('p');
+
+        if (doc) {
+            docp.forEach((el, index) => {
+                gsap.fromTo(el,
+                    {
+                        opacity: 0,
+                        y: 20,
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        delay: index * 0.5,
+                        duration: 1,
+                        ease: Power2.easeInOut,
+                    },
+                    2 //x秒後にアニメーション
+                );
+            });
+        }
+        //
+
+
+        //最後の表示
         const tl = gsap.timeline({ paused: true });
 
         tl.fromTo(
@@ -306,15 +333,13 @@
             requestPermission();
         });
 
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
         let isAnimating = false;
 
         const sections = document.querySelectorAll(".section");
 
         sections.forEach((section) => {
-            // テキストアニメーションのためのScrollTrigger
             const textBox = section.querySelector('.txt-box');
+            // テキストアニメーションのためのScrollTrigger
             if (textBox) {
                 const paragraphs = textBox.querySelectorAll('p, button');
                 paragraphs.forEach((el, index) => {
@@ -367,6 +392,8 @@
         }
 
         ScrollTrigger.addEventListener("scrollEnd", () => console.log("scrollEnd"));
+
+
 
 
 
