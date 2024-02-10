@@ -2,7 +2,11 @@
     display: none;
 }
 
-
+:root{
+    --sprite-img_size: 174060px;
+    --sprite-img_width: 500px;
+    --step: 29;
+}
 
 body {
     -ms-overflow-style: none;
@@ -54,16 +58,16 @@ p {
     font-size: 1.7em;
     margin-top: -1em;
 }
-
+/* 
 .sprite-anim {
     width: 100%;
     height: 100%;
-}
+} */
 
-#mask{
+/* #mask{
     width: 480px;
     height: 270px;
-}
+} */
 
 /* #mask path{
     fill: #4B4B4B;
@@ -75,16 +79,26 @@ p {
     height: 113px;
 }
 
+.sprite-anim_space{
+    width: 76px;
+    height: 214px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sprite-anim_image {
     /* display: inline-block; */
-    mask-image: url("./img/noise1.png");
+    mask-image: url("./img/noise5.png");
     mask-repeat: no-repeat;
     mask-position: 0 0;
+    mask-size: calc(var(--sprite-img_width) * 29 + var(--sprite-img_width));
     /* Chrome, Sarafi用 */
-    -webkit-mask-image: url("./img/noise1.png");
+    -webkit-mask-image: url("./img/noise5.png");
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: 0 0;
-    animation: sprite-animation 2.5s steps(40) forwards;
+    -webkit-mask-size:calc(var(--sprite-img_width) * 29 + var(--sprite-img_width));
+    animation: sprite-animation 2.5s steps(var(--step)) forwards;
 }
 
 @keyframes sprite-animation {
@@ -95,29 +109,28 @@ p {
 
     100% {
         /* スプライトイメージ全体の幅 - 1フレームの幅 */
-        mask-position: calc((7736px - 967px) * -1) 0;
-        -webkit-mask-position: calc((7736px - 967px) * -1) 0;
+        mask-position: calc(var(--sprite-img_width) * var(--step) * -1) 0;
+        -webkit-mask-position: calc(var(--sprite-img_width) * var(--step) * -1) 0;
+
+        /* mask-position: 100% 0;
+        -webkit-mask-position: 100% 0; */
+
+        /* mask-position: calc(var(--sprite-img_size) + var(--sprite-img_width)) 0;
+        -webkit-mask-position: calc(var(--sprite-img_size) + var(--sprite-img_width)) 0; */
     }
 }
 
-@keyframes hello {
+@keyframes sprite-animation2 {
     0% {
-        stroke-dashoffset: 2000;
-        fill: transparent;
-    }
-
-    40% {
-        stroke-dashoffset: 2000;
-        fill: transparent;
-    }
-
-    50% {
-        fill: transparent;
+        /* マスクの初期位置を中央から左にシフト */
+        mask-position: 0 0;
+        -webkit-mask-position: 0 0;
     }
 
     100% {
-        stroke-dashoffset: 0;
-        fill: #000;
+        /* マスクの最終位置を中央から右にシフト */
+        mask-position: -12084px 0;
+        -webkit-mask-position: -12084px 50%;
     }
 }
 
@@ -324,8 +337,6 @@ p {
     text-align: center;
 }
 
-#accel
-
 .title-box{
     display: flex;
     align-items: center;
@@ -363,10 +374,10 @@ p {
 }
 
 @media (max-width: 500px) {
-    #mask{
+    /* #mask{
         width: 380px;
         height: 214px;
-    }
+    } */
 
     .section1{
         gap: 2em;
