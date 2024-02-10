@@ -377,11 +377,11 @@ p {
     margin-top: 3em;
 }
 
-.policy-list p{
+.credit .policy-list p{
     text-align: center;
 }
 
-.policy-list p span{
+.credit .policy-list p span{
     font-size: 1.3em;
 }
 
