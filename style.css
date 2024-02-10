@@ -377,6 +377,14 @@ p {
     margin-top: 3em;
 }
 
+.policy-list p{
+    text-align: center;
+}
+
+.policy-list p span{
+    font-size: 1.3em;
+}
+
 @media (max-width: 500px) {
     /* #mask{
         width: 380px;
