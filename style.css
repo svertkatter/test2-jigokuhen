@@ -116,7 +116,7 @@ p {
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: 0 0;
     -webkit-mask-size:calc(var(--sprite-img_width) * var(--step) + var(--sprite-img_width));
-    animation: sprite-animation 2.5s steps(var(--step)) forwards;
+    animation: sprite-animation2 2.5s steps(var(--step)) forwards;
 }
 
 @keyframes sprite-animation {
@@ -137,7 +137,7 @@ p {
     }
 }
 
-@keyframes sprite-animation {
+@keyframes sprite-animation2 {
     0% {
         mask-position: 0 0;
         -webkit-mask-position: 0 0;
