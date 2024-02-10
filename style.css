@@ -88,16 +88,34 @@ p {
 }
 
 .sprite-anim_image {
-    /* display: inline-block; */
     mask-image: url("./img/noise5.png");
     mask-repeat: no-repeat;
     mask-position: 0 0;
-    mask-size: calc(var(--sprite-img_width) * 29 + var(--sprite-img_width));
-    /* Chrome, Sarafi用 */
+    mask-size: calc(var(--sprite-img_width) * var(--step) + var(--sprite-img_width));
     -webkit-mask-image: url("./img/noise5.png");
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: 0 0;
-    -webkit-mask-size:calc(var(--sprite-img_width) * 29 + var(--sprite-img_width));
+    -webkit-mask-size:calc(var(--sprite-img_width) * var(--step) + var(--sprite-img_width));
+    animation: sprite-animation 2.5s steps(var(--step)) forwards;
+}
+
+.sprite-anim_space2{
+    width: 200px;
+    height: 113px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sprite-anim_image2 {
+    mask-image: url("./img/noise3.png");
+    mask-repeat: no-repeat;
+    mask-position: 0 0;
+    mask-size: calc(var(--sprite-img_width) * var(--step) + var(--sprite-img_width));
+    -webkit-mask-image: url("./img/noise3.png");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: 0 0;
+    -webkit-mask-size:calc(var(--sprite-img_width) * var(--step) + var(--sprite-img_width));
     animation: sprite-animation 2.5s steps(var(--step)) forwards;
 }
 
@@ -108,7 +126,6 @@ p {
     }
 
     100% {
-        /* スプライトイメージ全体の幅 - 1フレームの幅 */
         mask-position: calc(var(--sprite-img_width) * var(--step) * -1) 0;
         -webkit-mask-position: calc(var(--sprite-img_width) * var(--step) * -1) 0;
 
@@ -120,17 +137,21 @@ p {
     }
 }
 
-@keyframes sprite-animation2 {
+@keyframes sprite-animation {
     0% {
-        /* マスクの初期位置を中央から左にシフト */
         mask-position: 0 0;
         -webkit-mask-position: 0 0;
     }
 
     100% {
-        /* マスクの最終位置を中央から右にシフト */
-        mask-position: -12084px 0;
-        -webkit-mask-position: -12084px 50%;
+        mask-position: 0 calc(var(--sprite-img_width) * var(--step) * -1);
+        -webkit-mask-position: 0 calc(var(--sprite-img_width) * var(--step) * -1);
+
+        /* mask-position: 100% 0;
+        -webkit-mask-position: 100% 0; */
+
+        /* mask-position: calc(var(--sprite-img_size) + var(--sprite-img_width)) 0;
+        -webkit-mask-position: calc(var(--sprite-img_size) + var(--sprite-img_width)) 0; */
     }
 }
 
