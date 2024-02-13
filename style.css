@@ -385,6 +385,12 @@ p {
     font-size: 1.3em;
 }
 
+#lottie{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1em;
+}
+
 @media (max-width: 500px) {
     /* #mask{
         width: 380px;
