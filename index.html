@@ -230,6 +230,18 @@
             ws.send(JSON.stringify(resetValue));
         }
 
+        function sendSelect(){
+            const data = {
+                type: "accelerationData",
+                id: uniqueId,
+                x: 16,
+                y: 0,
+                z: 0,
+                select: selectValue
+            }
+            ws.send(JSON.stringify(data));
+        }
+
         //ページをロードした時
         window.onload = function () {
             uniqueId = generateRandomId();
@@ -354,12 +366,14 @@
         document.getElementById('permissionButton').addEventListener('click', function () {
             tl.play();
             selectValue = 0;
+            sendSelect(); //選択肢を選択したら一度屏風を元に戻すための処理
             requestPermission();
         });
 
         document.getElementById('resetButton').addEventListener('click', function () {
             tl.play();
             selectValue = 1;
+            sendSelect();
             requestPermission();
         });
 
