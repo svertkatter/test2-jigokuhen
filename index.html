@@ -428,18 +428,18 @@
         });
 
 
-        // function goToSection(section) {
-        //     if (isAnimating) return;
-        //     isAnimating = true;
-        //     gsap.to(window, {
-        //         scrollTo: { y: section, autoKill: false },
-        //         // 秒数を0.8以下にするとループする。
-        //         duration: 0.9,
-        //         onComplete: () => {
-        //             isAnimating = false;
-        //         }
-        //     });
-        // }
+        function goToSection(section) {
+            if (isAnimating) return;
+            isAnimating = true;
+            // gsap.to(window, {
+            //     scrollTo: { y: section, autoKill: false },
+            //     // 秒数を0.8以下にするとループする。
+            //     duration: 0.9,
+            //     onComplete: () => {
+            //         isAnimating = false;
+            //     }
+            // });
+        }
 
         ScrollTrigger.addEventListener("scrollEnd", () => console.log("scrollEnd"));
 
